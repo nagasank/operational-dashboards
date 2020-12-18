@@ -1,0 +1,44 @@
+Action Items:
+08/15/2020:
+    1. In chart_utils.py, use SnowflakeConnection object instead of snowflake.connector
+    2. For every page, add a new file <page>_modal.py
+    3. Add Data Cards as separate rows
+
+Whenever a page is added, following steps to done:
+    0. Add from . import <pagename>   that corresponds to the <pagename.py>
+    1. For each view or query that the page needs to handle,
+        add code in tasks.py to populate the redis cache using the following convention
+        Key: <table_name>
+        Field: DATASET
+    2. Create a new python file <page_name>.py that matches with menu item and place it in pages folder
+    3. Make sure chart_utils.get_loaded_data() function is used and no database call is explicitly made in <page_name>.py
+    4. Create a new python file <page_name>_modal.py  that handles all modal actions - lot of work is needed here
+    5. Index.py - Add menu item
+    6. Index.py - Add a new entry correspond to the menu item in display_content function
+    7. Add page_name and data_table_name to the modal function so that when comments is submitted, it gets updated
+    8. Update chart_utils.update_data() function to handle comments by page and report - not developed yet
+
+
+# Tables to be added
+TBD                             ADMISSIONS
+TBD                             BILLING_BATCH_REPORT
+TBD                             DDE_TIMELYFILING
+TBD                             DELETED_PATIENTS
+TBD                             HOME_QACENTER
+TBD                             HOSPITALIZATION_LOGS
+TBD                             PATIENTADMISSIONS_INTERNAL_REFERRAL_SOURCE
+TBD                             PATIENTS_NONADMISSIONS
+TBD                             PATIENTS_PENDINGADMISSIONS
+TBD                             PHYSICIAN_ORDER_HISTORY
+TBD                             REFERRAL_LOG
+TBD                             SCHEDULEREPORTS_DETAILS
+TBD                             VW_BILLINGCENTER_RAP
+TBD                             VW_BILLINGCENTER_FINAL
+TBD                             VW_MISSING_AUTHORIZATIONS
+
+DONE                            VW_PATIENT_ROSTER
+DONE                            VW_VISITSBYSTATUS_TASK_CATEGORY
+DONE                            SCHEDULEREPORTS_VISITSBYSTATUS
+DONE                            VIEW_ORDERSHISTORY
+DONE                            VIEW_ORDERSMANAGEMENT_ORDERSPENDINGMDS
+DONE                            VIEW_ORDERSTOBESENT

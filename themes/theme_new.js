@@ -1,0 +1,80 @@
+window.theme = {
+    accent:"#fa4f56",
+    accent_negative:"#ff2c6d",
+    accent_positive:"#33ffe6",
+    background_content:"#F9F9F9",
+    background_page:"#F2F2F2",
+    border:"#e2e2e2",
+    breakpoint_font:"1200px",
+    breakpoint_stack_blocks:"700px",
+    card_border:{
+         width:"1px",
+         style:"solid",
+         color:"#e2e2e2",
+         radius:"0px"
+    },
+    card_background_color:"#F9F9F9",
+    card_box_shadow:"0px 0px 0px rgba(0,0,0,0)",
+    card_margin:0,
+    card_padding:"5px",
+    card_outline:{
+         width:"1px",
+         style:"solid",
+         color:"#e2e2e2"
+    },
+    card_header_border:{
+         width:"0px 0px 1px 0px",
+         style:"solid",
+         color:"#e2e2e2",
+         radius:"0px"
+    },
+    card_header_background_color:"#F9F9F9",
+    card_header_box_shadow:"0px 0px 0px rgba(0,0,0,0)",
+    card_header_margin:"0px",
+    card_header_padding:"10px",
+    colorway:[
+         "#ff8827",
+         "#66c2a5",
+         "#8da0cb",
+         "#e78ac3",
+         "#a6d854",
+         "#ffd92f",
+         "#e5c494",
+         "#b3b3b3"
+    ],
+    colorscale:[
+         "#ff8827",
+         "#ff9542",
+         "#ffa35b",
+         "#ffb072",
+         "#ffbd89",
+         "#ffcaa0",
+         "#ffd7b8",
+         "#ffe4cf",
+         "#fff2e7",
+         "#ffffff"
+    ],
+    font_family:"Lato",
+    font_size:"15px",
+    font_size_smaller_screen:"13px",
+    font_family_header:"Noto Serif",
+    font_size_header:"24px",
+    font_family_headings:"Noto Serif",
+    font_headings_size:null,
+    header_border:{
+         width:"0px",
+         style:"solid",
+         color:"#e2e2e2",
+         radius:"0px"
+    },
+    header_background_color:"#F2F2F2",
+    header_box_shadow:"none",
+    header_margin:"0px",
+    header_padding:"0px",
+    text:"#606060",
+    report_font_family:"Computer Modern",
+    report_font_size:"12px",
+    report_background_page:"white",
+    report_background_content:"#FAFBFC",
+    report_text:"black"
+}
