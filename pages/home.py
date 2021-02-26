@@ -205,9 +205,11 @@ def show_patients(clinicians):
     the list of patients will be the list of patients the selected clinicians are responsible for.
     """
     data = chart_utils.get_loaded_data("SCHEDULEREPORTS_VISITSBYSTATUS","DATASET")
+    #print(data.columns)
     if clinicians:
         data = data.loc[data["ASSIGNED_TO"].isin(clinicians)]
     patients = sorted([patient for patient in data["PATIENT"].unique() if patient])
+    #print(patients)
     options = [{"label": patient, "value": patient} for patient in patients]
     return options
 
@@ -231,6 +233,7 @@ def update_charts(
     selected_status, selected_clinicians, selected_patients, start_date, end_date
 ):
     data = chart_utils.get_loaded_data("SCHEDULEREPORTS_VISITSBYSTATUS","DATASET")
+    #print(data.columns)
     if start_date:
         data = data.loc[data["SCHEDULED_DATE"] > start_date]
     if end_date:

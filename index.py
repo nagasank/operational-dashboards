@@ -62,6 +62,10 @@ app.layout = ddk.App(
                     children='Census'
                 ),
                 dcc.Link(
+                    href=app.get_relative_path('/VisitPlanning'),
+                    children='VisitPlanning'
+                ),
+                dcc.Link(
                     href=app.get_relative_path('/orders'),
                     children='Orders'
                 ),
@@ -81,6 +85,10 @@ app.layout = ddk.App(
                 dcc.Link(
                     href=app.get_relative_path('/billing'),
                     children='Billing'
+                ),
+                dcc.Link(
+                    href=app.get_relative_path('/OrderProcessing'),
+                    children='Order Processing'
                 ),
             ]),
         ]),
@@ -111,7 +119,10 @@ def display_content(pathname):
         return pages.billing.layout()
     elif page_name == "qa":
         return
-        #return pages.qa.layout()
+    elif page_name == "OrderProcessing":
+        return pages.OrderProcessing.layout()
+    elif page_name == "VisitPlanning":
+        return pages.VisitPlanning.layout()
     elif page_name == "bd":
         return 
         #return pages.bd.layout()

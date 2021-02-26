@@ -15,7 +15,7 @@ def custom_input_layout(data, patient, task, date):
             html.P("Select a patient"),
             ddk.ControlItem(
                 dcc.Dropdown(
-                    id="selected-patient",
+                    id="opm_selected-patient",
                     options=[
                         {"label": i, "value": i}
                         for i in sorted([i for i in data["PATIENT"].unique() if i])
@@ -27,7 +27,7 @@ def custom_input_layout(data, patient, task, date):
             html.P("Select a task for the patient"),
             ddk.ControlItem(
                 dcc.Dropdown(
-                    id="task-selection",
+                    id="opm_task-selection",
                     placeholder="Select a task...",
                     disabled=task is None,
                     value=task,
@@ -36,7 +36,7 @@ def custom_input_layout(data, patient, task, date):
             html.P("Select a date for the task"),
             ddk.ControlItem(
                 dcc.Dropdown(
-                    id="task-date",
+                    id="opm_task-date",
                     placeholder="Select a date...",
                     disabled=date is None,
                     value=date,
@@ -85,7 +85,7 @@ def take_action_layout(data, clinician, status, disabled=False):
             html.P("Change assignee"),
             ddk.ControlItem(
                 dcc.Dropdown(
-                    id="task-assignee",
+                    id="opm_task-assignee",
                     options=[
                         {"label": i, "value": i}
                         for i in sorted([i for i in data["ASSIGNED_TO"].unique() if i])
@@ -99,7 +99,7 @@ def take_action_layout(data, clinician, status, disabled=False):
             html.P("Update task status"),
             ddk.ControlItem(
                 dcc.Dropdown(
-                    id="task-status",
+                    id="opm_task-status",
                     options=[
                         {"label": i, "value": i}
                         for i in sorted([i for i in data["STATUS"].unique() if i])
@@ -112,7 +112,7 @@ def take_action_layout(data, clinician, status, disabled=False):
             html.P("Add a comment"),
             ddk.ControlItem(
                 dcc.Input(
-                    id="action-items",
+                    id="opm_action-items",
                     type="text",
                     placeholder="Type comment here",
                     disabled=disabled,
@@ -120,10 +120,10 @@ def take_action_layout(data, clinician, status, disabled=False):
             ),
             ddk.ControlItem(
                 html.Button(
-                    "Submit", id="submit-action", n_clicks=0, style={"margin": "auto"},
+                    "Submit", id="opm_submit-action", n_clicks=0, style={"margin": "auto"},
                 ),
             ),
-            html.Div(id="success-message", style={"text-align": "center"},),
+            html.Div(id="opm_success-message", style={"text-align": "center"},),
         ],
     )
 
@@ -133,15 +133,15 @@ def take_action_layout(data, clinician, status, disabled=False):
 # ------------ This callback interprets the values selected in                  -------
 # ------------ the modal dropdown and is intended to pass them to the database. -------
 @app.callback(
-    Output("success-message", "children"),
-    [Input("submit-action", "n_clicks")],
+    Output("opm_success-message", "children"),
+    [Input("opm_submit-action", "n_clicks")],
     [
-        State("task-assignee", "value"),
-        State("task-status", "value"),
-        State("action-items", "value"),
-        State("selected-patient", "value"),
-        State("task-selection", "value"),
-        State("task-date", "value"),
+        State("opm_task-assignee", "value"),
+        State("opm_task-status", "value"),
+        State("opm_action-items", "value"),
+        State("opm_selected-patient", "value"),
+        State("opm_task-selection", "value"),
+        State("opm_task-date", "value"),
     ],
 )
 def submit_request(
@@ -207,12 +207,12 @@ def submit_request(
 # ---------------------------------------------------------------------------------------
 @app.callback(
     [
-        Output("modal-div", "children"),
-        Output("expand-modal", "children"),
-        Output("expand-modal-2", "children"),
+        Output("opm_modal-div", "children"),
+        Output("opm_expand-modal", "children"),
+        Output("opm_expand-modal-2", "children"),
     ],
-    [Input("data-table", "selected_rows")],
-    [State("data-table", "data")],
+    [Input("opm_data-table", "selected_rows")],
+    [State("opm_data-table", "data")],
 )
 def populate_modal(selected_ids, table_rows):
     """
@@ -255,8 +255,8 @@ def populate_modal(selected_ids, table_rows):
 
 
 @app.callback(
-    [Output("task-selection", "options"), Output("task-selection", "disabled")],
-    [Input("selected-patient", "value")],
+    [Output("opm_task-selection", "options"), Output("opm_task-selection", "disabled")],
+    [Input("opm_selected-patient", "value")],
 )
 def select_patient(selected_patient):
     """
@@ -274,8 +274,8 @@ def select_patient(selected_patient):
 
 
 @app.callback(
-    [Output("task-date", "options"), Output("task-date", "disabled")],
-    [Input("task-selection", "value"), Input("selected-patient", "value")],
+    [Output("opm_task-date", "options"), Output("opm_task-date", "disabled")],
+    [Input("opm_task-selection", "value"), Input("opm_selected-patient", "value")],
 )
 def select_date(selected_task, selected_patient):
     """
